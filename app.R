@@ -1,6 +1,37 @@
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
 ################################################################################
+# Install in sequence
+# R version 4.5.2
+
+# Check package versions
+# BiocManager::version()
+# packageVersion("iSEE")
+# packageVersion("SparseArray")
+# packageVersion("S4Arrays")
+# packageVersion("SingleCellExperiment")
+# packageVersion("SummarizedExperiment")
+# 
+# # LOAD PACKAGES
+library(iSEE); #BiocManager::install("iSEE",ask = FALSE,update = FALSE, force = TRUE)
+library(ggplot2) #install.packages("ggplot2")
+library(memoise) #install.packages("memoise")
+library(htmltools) #install.packages("htmltools")
+library(base64enc) #install.packages("base64enc")
+################################################################################
+# Create RENV file
+#install.packages("renv")
+library(renv)
+renv::snapshot()
+# Select "y" after this
+# Then select "1"
+################################################################################
+# Set working directory: 
+install.packages("this.path")
+library(this.path)
+setwd(this.path::here())
+################################################################################
+################################################################################
 # IMPORTANT: Use this script for any scRNA seq study.
 # Requirements: 
 # 1. Update variable names e.g. nCounts_RNA, nFeature_RNA, cclass, ctypes
@@ -21,11 +52,31 @@ tour <- read.delim("tour.txt", sep=";", stringsAsFactors = FALSE, row.names = NU
 ################################################################################
 
 ################################################################################
-library(iSEE); 
-library(ggplot2)
-library(memoise)
-library(htmltools)
-library(base64enc)
+# Install in sequence
+# R version 4.5.2
+
+# Check package versions
+# BiocManager::version()
+# packageVersion("iSEE")
+# packageVersion("SparseArray")
+# packageVersion("S4Arrays")
+# packageVersion("SingleCellExperiment")
+# packageVersion("SummarizedExperiment")
+# 
+# # LOAD PACKAGES
+library(iSEE); #BiocManager::install("iSEE",ask = FALSE,update = FALSE, force = TRUE)
+library(ggplot2) #install.packages("ggplot2")
+library(memoise) #install.packages("memoise")
+library(htmltools) #install.packages("htmltools")
+library(base64enc) #install.packages("base64enc")
+################################################################################
+# Create RENV file
+#install.packages("renv")
+library(renv)
+renv::snapshot()
+# Select "y" after this
+# Then select "1"
+################################################################################
 ################################################################################
 # To retrieve an option: "getOption('timeout')" and to set an option
 options(timeout=600)
@@ -303,7 +354,7 @@ setMethod(".hideInterface", "FooterPanel",
 )
 
 # Encode image into base64 encoding
-socialMedia_base64 <- base64encode("socialMedia_1.png")
+socialMedia_base64 <- base64encode("socialMedia.png")
 
 setMethod(".defineOutput", "FooterPanel", function(x) {
   plot_name <- .getEncodedName(x)
@@ -378,15 +429,6 @@ iSEE(
   colormap = ExperimentColorMap(colData = list(
     ctypes = function(n) {col_vector[!grepl("drop", names(col_vector))]}))
 )
-################################################################################
-# Create RENV file
-install.packages("renv")
-library(renv)
-renv::snapshot()
-# Select "y" after this
-# Then select "1"
-################################################################################
-
 ################################################################################
 # Code Ends
 ################################################################################
